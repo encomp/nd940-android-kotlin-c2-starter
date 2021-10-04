@@ -43,6 +43,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "androidx.appcompat:appcompat:$rootProject.appCompatVersion"
     implementation "androidx.core:core-ktx:$rootProject.ktxVersion"
+    implementation "androidx.core:core-splashscreen:$rootProject.splashScreenVersion"
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
     implementation "androidx.fragment:fragment-ktx:$rootProject.fragmentVersion"
     implementation "androidx.legacy:legacy-support-v4:$rootProject.legacySupportVersion"
@@ -53,10 +54,13 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:$rootProject.recyclerViewVersion"
     implementation "androidx.room:room-runtime:$rootProject.roomVersion"
     kapt "androidx.room:room-compiler:$rootProject.roomVersion"
-    implementation "android.arch.work:work-runtime-ktx:$rootProject.workVersion"
+    implementation "androidx.work:work-runtime-ktx:$workVersion"
 
     //Google
     implementation "com.google.android.material:material:$rootProject.materialVersion"
+
+    //airbnb
+    implementation "com.airbnb.android:lottie:$rootProject.lottieVersion"
 
     // Square
     implementation "com.squareup.moshi:moshi:$rootProject.moshiVersion"
