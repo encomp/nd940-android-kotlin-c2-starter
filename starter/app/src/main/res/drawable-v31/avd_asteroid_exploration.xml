@@ -1,22 +1,8 @@
-<!--<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:aapt="http://schemas.android.com/aapt"-->
-<!--    android:drawable="@drawable/ic_asteroid_exploration">-->
-
-<!--    <target android:name="rotationGroup">-->
-<!--        <aapt:attr name="android:animation">-->
-<!--            <set>-->
-<!--                <objectAnimator-->
-<!--                    android:duration="?windowSplashScreenAnimationDuration"-->
-<!--                    android:propertyName="rotation"-->
-<!--                    android:valueFrom="360"-->
-<!--                    android:valueTo="0"-->
-<!--                    android:interpolator="@android:anim/decelerate_interpolator"-->
-<!--                    />-->
-<!--            </set>-->
-<!--        </aapt:attr>-->
-<!--    </target>-->
-<!--</animated-vector>-->
 <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/ic_asteroid_exploration">
+
+</animated-vector>
+<!--animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:aapt="http://schemas.android.com/aapt">
     <aapt:attr name="android:drawable">
         <vector
@@ -72,4 +58,4 @@
                 android:valueType="floatType" />
         </aapt:attr>
     </target>
-</animated-vector>
+</animated-vector-->
