@@ -42,18 +42,18 @@ class MainActivity : AppCompatActivity() {
             lottieView.addAnimatorListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator?) {
                     val contentView = findViewById<View>(android.R.id.content)
-                    val view = findViewById<FrameLayout>(R.id.fragment_container)
+                    val fragmentContainer = findViewById<FrameLayout>(R.id.fragment_container)
 
                     val animator =
                         ViewAnimationUtils.createCircularReveal(
-                            view,
+                            fragmentContainer,
                             contentView.width / 2,
                             contentView.height / 2,
                             0f,
                             max(contentView.width, contentView.height).toFloat()
                         ).setDuration(600)
 
-                    view.visibility = View.VISIBLE
+                    fragmentContainer.visibility = View.VISIBLE
                     animator.start()
                 }
             })
