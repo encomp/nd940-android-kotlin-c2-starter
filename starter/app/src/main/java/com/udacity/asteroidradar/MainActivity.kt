@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewAnimationUtils
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.airbnb.lottie.LottieAnimationView
 import java.lang.Integer.max
@@ -42,7 +43,7 @@ class MainActivity : AppCompatActivity() {
             lottieView.addAnimatorListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator?) {
                     val contentView = findViewById<View>(android.R.id.content)
-                    val fragmentContainer = findViewById<FrameLayout>(R.id.fragment_container)
+                    val fragmentContainer = findViewById<CoordinatorLayout>(R.id.fragment_container)
 
                     val animator =
                         ViewAnimationUtils.createCircularReveal(
