@@ -15,3 +15,6 @@
 # gradle
 gradle/
 gradlew*
+
+# API Keys
+/starter/apiKey.properties
