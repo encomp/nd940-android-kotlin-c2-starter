@@ -10,7 +10,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Asteroid(
     @PrimaryKey
-    val id: Long = 0L,
+    val id: Long,
 
     @ColumnInfo(name = "codeName")
     val codename: String,
