@@ -8,7 +8,7 @@ import com.udacity.asteroidradar.Asteroid
  * Defines the data access object of the Asteroid database.
  */
 @Dao
-interface AsteroidDatabaseDao {
+interface AsteroidDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg asteroids: Asteroid)
 

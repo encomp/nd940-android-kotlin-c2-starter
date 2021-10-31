@@ -4,7 +4,7 @@ import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.udacity.asteroidradar.persistence.AsteroidDatabase
-import com.udacity.asteroidradar.persistence.AsteroidDatabaseDao
+import com.udacity.asteroidradar.persistence.AsteroidDao
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -16,7 +16,7 @@ import java.io.IOException
 class AsteroidDatabaseTest {
 
     private lateinit var asteroidDb: AsteroidDatabase
-    private lateinit var asteroidDao: AsteroidDatabaseDao
+    private lateinit var asteroidDao: AsteroidDao
 
     @Before
     fun createDb() {
@@ -24,7 +24,7 @@ class AsteroidDatabaseTest {
         asteroidDb = Room.inMemoryDatabaseBuilder(context, AsteroidDatabase::class.java)
             .allowMainThreadQueries()
             .build()
-        asteroidDao = asteroidDb.asteroidDatabaseDao
+        asteroidDao = asteroidDb.asteroidDao
     }
 
     @After

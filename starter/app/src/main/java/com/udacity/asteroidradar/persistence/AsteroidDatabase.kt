@@ -13,7 +13,7 @@ import com.udacity.asteroidradar.Asteroid
 @Database(entities = [Asteroid::class], version = 1, exportSchema = false)
 abstract class AsteroidDatabase : RoomDatabase() {
 
-    abstract val asteroidDatabaseDao: AsteroidDatabaseDao
+    abstract val asteroidDao: AsteroidDao
 
     /**
      * Define a companion object, this allows us to add functions on the AsteroidDatabase class.
