@@ -10,7 +10,7 @@ import com.udacity.asteroidradar.Asteroid
  * A database that stores Asteroid information.
  * And a global method to get access to the database.
  */
-@Database(entities = [Asteroid::class], version = 1, exportSchema = false)
+@Database(entities = arrayOf(Asteroid::class), version = 1, exportSchema = false)
 abstract class AsteroidDatabase : RoomDatabase() {
 
     abstract val asteroidDao: AsteroidDao
