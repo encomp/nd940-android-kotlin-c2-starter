@@ -36,8 +36,7 @@ class PullAsteroidWorker(appContext: Context, workerParams: WorkerParameters) :
         val formattedEndDate = formatter.format(currentDate.time)
         val asteroidList = NasaRepository().getAsteroids(
             formattedStartDate,
-            formattedEndDate,
-            "rpkESuINzPffq1qbOY8P9AfrTLXnvA8PjlW5OnhL"
+            formattedEndDate
         )
         asteroidDao.deleteAllAsteroidsBeforeToday(formattedStartDate)
         asteroidDao.insertAllAsteroids(asteroidList)

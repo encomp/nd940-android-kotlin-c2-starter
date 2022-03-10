@@ -1,6 +1,7 @@
 package com.udacity.asteroidradar.api
 
 import com.udacity.asteroidradar.Asteroid
+import com.udacity.asteroidradar.BuildConfig
 import com.udacity.asteroidradar.PictureOfDay
 import org.json.JSONObject
 import retrofit2.await
@@ -10,17 +11,16 @@ import timber.log.Timber
 class NasaRepository {
     private var nasaClient = NasaApi.retrofitService;
 
-    suspend fun getImageOfDay(apiKey: String): PictureOfDay {
-        val pictureOfDay = nasaClient.getImageOfTheDay(apiKey)
+    suspend fun getImageOfDay(): PictureOfDay {
+        val pictureOfDay = nasaClient.getImageOfTheDay(BuildConfig.API_KEY)
         return pictureOfDay.await()
     }
 
     suspend fun getAsteroids(
         startDate: String,
-        endDate: String,
-        apiKey: String
+        endDate: String
     ): List<Asteroid> {
-        val asteroidResponse = nasaClient.getAsteroids(startDate, endDate, apiKey).await()
+        val asteroidResponse = nasaClient.getAsteroids(startDate, endDate, BuildConfig.API_KEY).await()
         Timber.i("AsteroidResponse: %s", asteroidResponse)
         return parseAsteroidsJsonResult(JSONObject(asteroidResponse))
     }

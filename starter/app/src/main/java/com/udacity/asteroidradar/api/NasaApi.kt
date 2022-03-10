@@ -12,7 +12,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 private const val BASE_URL = "https://api.nasa.gov/"
-private val API_KEY = BuildConfig.API_KEY
+private const val API_KEY = BuildConfig.API_KEY
 
 /**
  * Build the Moshi object that Retrofit will be using, making sure to add the Kotlin adapter for
