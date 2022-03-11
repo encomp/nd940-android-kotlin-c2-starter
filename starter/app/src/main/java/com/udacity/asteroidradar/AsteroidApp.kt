@@ -17,11 +17,11 @@ class AsteroidApp : Application() {
         Timber.d("Init work manager")
         val fetchAsteroidWorkRequest: PeriodicWorkRequest =
             PeriodicWorkRequestBuilder<PullAsteroidWorker>(24, TimeUnit.HOURS)
-//                .setConstraints(Constraints.Builder()
-//                    .setRequiredNetworkType(NetworkType.CONNECTED)
-//                    .setRequiresCharging(true)
-//                    .build()
-//                )
+                .setConstraints(Constraints.Builder()
+                    .setRequiredNetworkType(NetworkType.CONNECTED)
+                    .setRequiresCharging(true)
+                    .build()
+                )
                 .build()
 
         WorkManager
