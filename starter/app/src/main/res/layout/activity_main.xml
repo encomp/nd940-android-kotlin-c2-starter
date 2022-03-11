@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/AppTheme.NoActionBarOverlay"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/AppTheme.NoActionBarOverlay"
     tools:context=".MainActivity">
 
     <com.airbnb.lottie.LottieAnimationView
@@ -36,7 +36,7 @@
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/app_background"
+            android:background="@color/colorSurface"
             app:defaultNavHost="true"
             app:navGraph="@navigation/main_nav_graph" />
 
@@ -45,7 +45,9 @@
             style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom" />
+            android:layout_gravity="bottom"
+            app:menu="@menu/main_overflow_menu"
+            app:hideOnScroll="true" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
