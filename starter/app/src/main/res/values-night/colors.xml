@@ -9,6 +9,6 @@
     <color name="colorError">#d81b60</color>
     <color name="colorOnError">#a00037</color>
     <color name="colorSurface">#000000</color>
-    <color name="primaryTextColor">#FFFFFF</color>
-    <color name="secondaryTextColor">#fafafa</color>
+    <color name="primaryTextColor">#fafafa</color>
+    <color name="secondaryTextColor">#FFFFFF</color>
 </resources>
