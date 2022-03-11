@@ -8,6 +8,7 @@
         <variable
             name="asteroid"
             type="com.udacity.asteroidradar.Asteroid" />
+
         <variable
             name="onClickListener"
             type="com.udacity.asteroidradar.main.OnAsteroidClickListener" />
@@ -16,6 +17,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
         android:clickable="true"
         android:onClick="@{() -> onClickListener.onClick(asteroid)}"
         android:orientation="horizontal">
