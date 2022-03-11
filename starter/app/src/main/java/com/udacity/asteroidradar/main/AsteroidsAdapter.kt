@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.udacity.asteroidradar.Asteroid
 import com.udacity.asteroidradar.databinding.ItemAsteroidBinding
-import timber.log.Timber
 
 class AsteroidsAdapter(private val clickListenerOn: OnAsteroidClickListener) :
     ListAdapter<Asteroid, AsteroidsAdapter.ViewHolder>(AsteroidDiffCallback()) {
@@ -32,7 +31,6 @@ class AsteroidsAdapter(private val clickListenerOn: OnAsteroidClickListener) :
         }
 
         fun bind(asteroid: Asteroid, onClickListener: OnAsteroidClickListener) {
-            Timber.v("Asteroid: $asteroid")
             binding.asteroid = asteroid
             binding.onClickListener = onClickListener
             binding.executePendingBindings()
