@@ -34,8 +34,8 @@
                 android:layout_height="wrap_content"
                 android:text="@{asteroid.codename}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textStyle="bold"
                 android:textColor="@color/primaryTextColor"
+                android:textStyle="bold"
                 tools:text="68347 (2001 KB67)" />
 
             <TextView
@@ -43,8 +43,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="start"
-                android:textColor="@color/secondaryTextColor"
                 android:text="@{asteroid.closeApproachDate}"
+                android:textColor="@color/secondaryTextColor"
                 tools:text="2022-02-01" />
         </LinearLayout>
 
@@ -55,7 +55,7 @@
             android:layout_gravity="center"
             android:layout_margin="8dp"
             android:adjustViewBounds="true"
-            android:contentDescription="@string/hazardous_indicator"
+            android:contentDescription="@{asteroid.potentiallyHazardous ? @string/potentially_hazardous_asteroid_image : @string/not_hazardous_asteroid_image}"
             android:scaleType="centerCrop"
             app:statusIcon="@{asteroid.potentiallyHazardous}"
             tools:src="@drawable/ic_status_potentially_hazardous" />
