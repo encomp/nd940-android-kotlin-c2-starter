@@ -1,16 +1,20 @@
 package com.udacity.asteroidradar.main
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.bottomappbar.BottomAppBar
+import com.udacity.asteroidradar.Asteroid
 import com.udacity.asteroidradar.R
 import com.udacity.asteroidradar.api.Outcome
 import com.udacity.asteroidradar.databinding.FragmentMainBinding
 import com.udacity.asteroidradar.persistence.AsteroidDatabase
-import timber.log.Timber
 
 class MainFragment : Fragment() {
 
@@ -31,43 +35,84 @@ class MainFragment : Fragment() {
         fragmentBinding.viewModel = viewModel
         fragmentBinding.lifecycleOwner = this
 
+        showProgressBar()
         setupAsteroidsAdapter()
+        setUpBottomBar()
         viewModel.getAsteroidsFromDatabaseByWeek().observe(viewLifecycleOwner, Observer { outcome ->
-            Timber.v("Asteroids: $outcome")
-            when(outcome.status) {
-                Outcome.Status.LOADING -> {
-                    fragmentBinding.statusLoadingWheel.visibility = View.VISIBLE
-                }
-                Outcome.Status.ERROR -> {
-                    Timber.e(outcome.error, outcome.message)
-                }
-                Outcome.Status.SUCCESS -> {
-                    fragmentBinding.statusLoadingWheel.visibility = View.GONE
-                    asteroidAdapter.submitList(outcome.data)
-                }
-            }
+            processOutcome(outcome)
         })
 
         fragmentBinding.executePendingBindings()
-        setHasOptionsMenu(true)
-
         return fragmentBinding.root
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.main_overflow_menu, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return true
+    override fun onResume() {
+        super.onResume()
+        activity?.findViewById<BottomAppBar>(R.id.bottomAppBar)?.visibility = View.VISIBLE
     }
 
     private fun setupAsteroidsAdapter() {
         asteroidAdapter = AsteroidsAdapter(OnAsteroidClickListener { asteroid ->
+            activity?.findViewById<BottomAppBar>(R.id.bottomAppBar)?.visibility = View.GONE
             findNavController().navigate(MainFragmentDirections.actionShowDetail(asteroid))
         })
         fragmentBinding.asteroidRecycler.adapter = asteroidAdapter
-        Timber.v("Adapter for Asteroids.")
+    }
+
+    private fun setUpBottomBar() {
+        val bottomAppBar: BottomAppBar? = activity?.findViewById<BottomAppBar>(R.id.bottomAppBar)
+        bottomAppBar?.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.show_today -> {
+                    showProgressBar()
+                    viewModel.getAsteroidsFromDatabaseByDate()
+                        .observe(viewLifecycleOwner, Observer { outcome ->
+                            processOutcome(outcome)
+                        })
+                    return@setOnMenuItemClickListener true
+                }
+                R.id.show_week -> {
+                    showProgressBar()
+                    viewModel.getAsteroidsFromDatabaseByWeek()
+                        .observe(viewLifecycleOwner, Observer { outcome ->
+                            processOutcome(outcome)
+                        })
+                    return@setOnMenuItemClickListener true
+                }
+                R.id.show_all -> {
+                    showProgressBar()
+                    viewModel.getAllAsteroidsFromDatabase()
+                        .observe(viewLifecycleOwner, Observer { outcome ->
+                            processOutcome(outcome)
+                        })
+                    return@setOnMenuItemClickListener true
+                }
+                else -> false
+            }
+        }
+    }
+
+    private fun showProgressBar() {
+        fragmentBinding.asteroidRecycler.visibility = View.GONE
+        fragmentBinding.statusLoadingWheel.visibility = View.VISIBLE
+    }
+
+    private fun processOutcome(outcome: Outcome<List<Asteroid>>) {
+        when (outcome.status) {
+            Outcome.Status.LOADING -> showProgressBar()
+            Outcome.Status.ERROR -> {
+                showRecyclerView()
+                Toast.makeText(context, outcome.message, Toast.LENGTH_LONG).show()
+            }
+            Outcome.Status.SUCCESS -> {
+                asteroidAdapter.submitList(outcome.data)
+                showRecyclerView()
+            }
+        }
+    }
+
+    private fun showRecyclerView() {
+        fragmentBinding.statusLoadingWheel.visibility = View.GONE
+        fragmentBinding.asteroidRecycler.visibility = View.VISIBLE
     }
 }
