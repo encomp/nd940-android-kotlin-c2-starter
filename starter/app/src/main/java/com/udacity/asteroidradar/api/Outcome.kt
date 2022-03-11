@@ -1,6 +1,6 @@
 package com.udacity.asteroidradar.api
 
-data class Result<out T>(val status: Status, val data: T?, val error: Error?, val message: String?) {
+data class Outcome<out T>(val status: Status, val data: T?, val error: Exception?, val message: String?) {
 
     enum class Status {
         SUCCESS,
@@ -9,16 +9,16 @@ data class Result<out T>(val status: Status, val data: T?, val error: Error?, va
     }
 
     companion object {
-        fun <T> success(data: T?): Result<T> {
-            return Result(Status.SUCCESS, data, null, null)
+        fun <T> success(data: T?): Outcome<T> {
+            return Outcome(Status.SUCCESS, data, null, null)
         }
 
-        fun <T> error(message: String, error: Error?): Result<T> {
-            return Result(Status.ERROR, null, error, message)
+        fun <T> error(message: String, error: Exception?): Outcome<T> {
+            return Outcome(Status.ERROR, null, error, message)
         }
 
-        fun <T> loading(data: T? = null): Result<T> {
-            return Result(Status.LOADING, data, null, null)
+        fun <T> loading(data: T? = null): Outcome<T> {
+            return Outcome(Status.LOADING, data, null, null)
         }
     }
 
