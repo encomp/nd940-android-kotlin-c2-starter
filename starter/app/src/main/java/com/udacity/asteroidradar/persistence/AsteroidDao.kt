@@ -25,7 +25,7 @@ interface AsteroidDao {
     fun deleteAll()
 
     @Query("SELECT * FROM asteroid where closeApproachDate >= date() ORDER BY closeApproachDate")
-    fun getAllAsteroids(): LiveData<List<Asteroid>>
+    fun getAllAsteroids(): List<Asteroid>
 
     @Query("SELECT * FROM asteroid WHERE closeApproachDate = :date")
     fun getAsteroidsByDate(date: String) : List<Asteroid>
