@@ -9,9 +9,6 @@
         <item name="colorError">@color/colorError</item>
         <item name="colorOnError">@color/colorOnError</item>
         <item name="colorSurface">@color/colorSurface</item>
-        <!--        <item name="colorOnSurface">@color/my_app_color_on_surface</item>-->
-        <!--        <item name="colorOnBackground">@color/my_app_color_on_background</item>-->
-        <!--        <item name="scrimBackground">@color/mtrl_scrim_color</item>-->
     </style>
 
     <style name="AppTheme.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar" />
@@ -22,10 +19,10 @@
     </style>
 
     <style name="AppTheme.SplashScreen" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">#FFFFFF</item>
+        <item name="windowSplashScreenBackground">#bdbdbd</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/avd_asteroid_exploration</item>
         <item name="windowSplashScreenAnimationDuration">500</item>
-        <item name="postSplashScreenTheme">@style/AppTheme.NoActionBar</item>
+        <item name="postSplashScreenTheme">@style/AppTheme</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.DayNight.ActionBar" />
